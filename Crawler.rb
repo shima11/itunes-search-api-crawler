@@ -3,6 +3,7 @@ require 'openssl'
 require 'net/http'
 require 'json'
 require 'date'
+require 'FileUtils'
 
 TIMEOUT_SEC = 10
 
@@ -44,7 +45,9 @@ begin
         response = https.get(path)
       end
       date = Date.today
-      File.open("./#{category}-#{country}-#{date}.json", "a") do |file|
+      dir = "./output/ranking/#{category}"
+      FileUtils.mkdir_p(dir) unless FileTest.exist?(dir)
+      File.open("#{dir}/#{category}-#{country}-#{date}.json", "a") do |file|
         file.puts response.body
       end
     }
