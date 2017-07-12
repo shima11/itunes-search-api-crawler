@@ -1,0 +1,15 @@
+current directory: /Users/shim/Github/iTunesSearchAPICrawler/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+/Users/shim/.rbenv/versions/2.4.1/bin/ruby -r ./siteconf20170710-70279-1nu7g8i.rb extconf.rb
+creating Makefile
+
+current directory: /Users/shim/Github/iTunesSearchAPICrawler/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/shim/Github/iTunesSearchAPICrawler/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/shim/Github/iTunesSearchAPICrawler/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20170710-70279-txt904
