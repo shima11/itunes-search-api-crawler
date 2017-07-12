@@ -18,12 +18,12 @@ https.verify_depth = 5
 
 categories = Array[
   'new-apps-we-love',
-#  'new-games-we-love',
   'top-grossing',
-#  'top-grossing-ipad',
   'top-paid',
+  'top-free'
+#  'top-grossing-ipad',
 #  'top-paid-games',
-  'top-free',
+#  'new-games-we-love',
 #  'top-free-games',
 #  'top-free-ipad'
 ]
