@@ -48,17 +48,58 @@ begin
 
   # ファイルからJSONオブジェクトの読み込み
 
-  categories.each { |category|
-    countries.each { |country|
-      File.open("./output/ranking/#{category}/#{country}/2017-06-25.json") do |file1|
-        # File.open("./output/ranking/#{category}/#{country}/2017-06-26.json") do |file2|
-          hash = JSON.load(file1)
-          puts hash['feed']
-          puts hash['results']
-        # end
-      end
+  output1 = []
+  output2 = []
+
+  # good = [] #ランキングが20以上上昇したもしくは圏外からランクインしたアプリ
+  # bad = [] #ランキングが20以上下落したもしくは圏外になったアプリ
+
+  File.open("./output/ranking/top-grossing/jp/2017-06-25.json") do |file|
+      hash = JSON.load(file)
+      results = hash['feed']['results']
+      results.each_with_index { |result,index|
+        if result['primaryGenreName'].to_s == 'ゲーム' then next end
+        data  = result['id'].to_s + "\t" + index.to_s + "\t" + result['name'].to_s + "\t" + result['artistName'].to_s
+        puts data
+        output1.push(data)
+      }
+  end
+
+  File.open("./output/ranking/top-grossing/jp/2017-06-26.json") do |file|
+    hash = JSON.load(file)
+    results = hash['feed']['results']
+    results.each_with_index { |result,index|
+      if result['primaryGenreName'].to_s == 'ゲーム' then next end
+      data  = result['id'].to_s + "\t" + index.to_s + "\t" + result['name'].to_s + "\t" + result['artistName'].to_s
+      puts data
+      output2.push(data)
+    }
+  end
+
+  # 必要なデータだけを抽出
+  File.open("./output/ranking/top-grossing/jp/file1.txt", "w") { |file|
+    output1.each { |data|
+      file.puts(data)
     }
   }
+  File.open("./output/ranking/top-grossing/jp/file2.txt", "w") { |file|
+    output2.each { |data|
+      file.puts(data)
+    }
+  }
+
+  # ユーザリストを作成
+  File.open("./output/ranking/top-grossing/jp/list1.txt", "w") { |file|
+    output1.each { |data|
+      file.puts(data.split(/\t/)[0])
+    }
+  }
+  File.open("./output/ranking/top-grossing/jp/list2.txt", "w") { |file|
+    output2.each { |data|
+      file.puts(data.split(/\t/)[0])
+    }
+  }
+
 
 rescue
 
